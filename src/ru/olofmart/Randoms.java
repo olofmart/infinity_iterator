@@ -6,12 +6,14 @@ import java.util.stream.IntStream;
 
 public class Randoms implements Iterable<Integer> {
     protected Random random;
-    Integer randomInt;
+    int min;
+    int max;
 
 
     public Randoms(int min, int max) {
         random = new Random();
-        randomInt = random.ints(min,(max+1)).findAny().getAsInt();
+        this.min = min;
+        this.max = max;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Randoms implements Iterable<Integer> {
 
             @Override
             public Integer next() {
-                return new Randoms(90, 100).randomInt;
+                return random.ints(min,(max+1)).findAny().getAsInt();
             }
         };
     }
